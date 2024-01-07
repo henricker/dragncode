@@ -1,5 +1,7 @@
 'use client';
 
+import { FormButton } from '@/components/UI/Form/FormButton';
+import { FormInput } from '@/components/UI/Form/FormInput';
 import { credentialsAuthenticationAction } from '@/modules/auth/actions/AuthCredential';
 import { githubSignAction } from '@/modules/auth/actions/AuthGithub';
 import GithubImg from '@public/Github.svg';
@@ -7,15 +9,13 @@ import EmailImg from '@public/email.svg';
 import KeyImg from '@public/key.svg';
 import Image from "next/image";
 import { useFormState } from 'react-dom';
-import { FormButton } from "../UI/FormButton";
-import { FormInput } from "../UI/FormInput";
+
 
 export function LoginForm() {
   const [formState, action] = useFormState(credentialsAuthenticationAction, { errors: {}})
   
     return (
       <>
-      
         <form 
           action={action}
           className='p-4 flex flex-col items-center gap-3 w-full xl:gap-8'

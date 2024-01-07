@@ -1,4 +1,4 @@
-import { FormButton } from "@/components/UI/FormButton";
+import { FormButton } from "@/components/UI/Form/FormButton";
 import { auth, signOut } from "@/modules/auth/infra/impl/services/nextAuth/providers";
 
 export default async function PrivatePage() {

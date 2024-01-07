@@ -1,4 +1,4 @@
-import { LoginForm } from '@/components/Login/LoginForm';
+import { LoginForm } from '@/app/auth/login/components/LoginForm';
 import { Logo } from '@/components/Logo';
 import PeopleWorkingImg from '@public/people-working.svg';
 import Image from "next/image";

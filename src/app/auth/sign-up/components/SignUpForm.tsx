@@ -1,5 +1,7 @@
 'use client';
 
+import { FormButton } from "@/components/UI/Form/FormButton";
+import { FormInput } from "@/components/UI/Form/FormInput";
 import { githubSignAction } from "@/modules/auth/actions/AuthGithub";
 import { createUserAction } from "@/modules/auth/actions/CreateUser";
 import GithubImg from '@public/Github.svg';
@@ -8,8 +10,6 @@ import KeyImg from '@public/key.svg';
 import UserImg from '@public/user.svg';
 import Image from "next/image";
 import { useFormState } from "react-dom";
-import { FormButton } from "../UI/FormButton";
-import { FormInput } from "../UI/FormInput";
 
 export function SignUpForm() {
     const [formState, action] = useFormState(createUserAction, { errors: {}})

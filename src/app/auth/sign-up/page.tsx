@@ -1,8 +1,8 @@
 import { Logo } from "@/components/Logo";
-import { SignUpForm } from "@/components/SignUp/SignUpForm";
 import PeopleWorkingImg from '@public/people-working.svg';
 import Image from "next/image";
 import Link from "next/link";
+import { SignUpForm } from "./components/SignUpForm";
 
 export default function SignUpPage() {
     return (
