@@ -2,8 +2,9 @@ import { IUser } from "@/modules/auth/domain/user";
 
 export type CreateUserInput = {
     name: string
-    password: string
+    password?: string
     email: string
+    image?: string
 }
 
 

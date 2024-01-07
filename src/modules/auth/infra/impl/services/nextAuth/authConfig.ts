@@ -1,6 +1,5 @@
-import { db } from "@/db/db"
+import { createUserOAuthAction } from "@/modules/auth/actions/CreateUserOAuth"
 import { NextAuthConfig } from "next-auth"
-
 export const authConfig = {
     pages: {
         signIn: '/auth/login',
@@ -16,18 +15,11 @@ export const authConfig = {
         },
         async signIn({ account, user  }) {
             if(account?.type === 'oauth') {
-                const emailExists = await db.user.findFirst({
-                    where: { email: user.email }
+                createUserOAuthAction({
+                    email: user.email!,
+                    name: user.name!,
+                    image: user.image!
                 })
-                if(!emailExists) {
-                    await db.user.create({
-                        data: {
-                            email: user.email,
-                            image: user.image,
-                            name: user.name
-                        }
-                    })
-                }
             }
             return true
         }

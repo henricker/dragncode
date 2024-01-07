@@ -16,9 +16,9 @@ export class UserRepoitory implements IUserRepository {
         return userDb ? this.userDbToDomain(userDb) : null
     }
 
-    async create({ email, name, password }: CreateUserInput): Promise<IUser> {
+    async create({ email, name, password, image }: CreateUserInput): Promise<IUser> {
         const userDb = await this.db.user.create({
-            data: { name, email, password }
+            data: { name, email, password, image }
         })
         return this.userDbToDomain(userDb)
     }
