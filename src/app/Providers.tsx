@@ -1,6 +1,7 @@
 'use client';
 
 import { NextUIProvider } from "@nextui-org/react";
+import { SessionProvider } from "next-auth/react";
 import { ReactNode } from "react";
 
 type ProvidersProp = {
@@ -9,8 +10,10 @@ type ProvidersProp = {
 
 export function Providers({ children }: Readonly<ProvidersProp>) {
     return (
-        <NextUIProvider>
-            { children }
-        </NextUIProvider>
+        <SessionProvider>
+            <NextUIProvider>
+                { children }
+            </NextUIProvider>
+        </SessionProvider>
     )
 }

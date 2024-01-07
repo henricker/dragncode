@@ -8,7 +8,7 @@ export class UserRepoitory implements IUserRepository {
     private db = db;
 
     private userDbToDomain(user: User) {
-        return { email: user.email, id: user?.id, password: user.password! }
+        return { email: user.email, id: user?.id, password: user.password!, name: user.name }
     }
     
     async findByEmail(email: string): Promise<IUser | null> {

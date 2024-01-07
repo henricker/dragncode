@@ -1,10 +1,10 @@
 'use server'
 
 import { redirect } from "next/navigation"
-import { authCredentialUseCaseFactory } from "./factory"
+import { signIn } from "../../infra/impl/services/nextAuth/providers"
 import { credentialsAuthenticationFormState, credentialsAuthenticationValidation } from "./validators"
 
-export async function credentialsAuthentication(_formState: credentialsAuthenticationFormState, formData: FormData): Promise<credentialsAuthenticationFormState> {
+export async function credentialsAuthenticationAction(_formState: credentialsAuthenticationFormState, formData: FormData): Promise<credentialsAuthenticationFormState> {
     const validate = credentialsAuthenticationValidation.safeParse({
         email: formData.get('email'),
         password: formData.get('password')
@@ -14,13 +14,10 @@ export async function credentialsAuthentication(_formState: credentialsAuthentic
         return { errors: validate.error.flatten().fieldErrors }
     }
 
-    const { email, password } = validate.data
-
     try {
-        const useCase = authCredentialUseCaseFactory()
-        await useCase.execute({ email, password })
-    } catch(err) {
-        console.error(err)
+        await signIn('credentials', { ...validate.data, redirect: false })
+    } catch(err: any) {
+        if(err.type === 'CredentialsSignin') return { errors: { _form: ['Email ou senha incorretos'] }}
         return { errors: { _form: ['Falha na autenticação'] }}
     }
 

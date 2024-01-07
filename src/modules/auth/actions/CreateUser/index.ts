@@ -25,7 +25,6 @@ export async function createUserAction(_formState: CreateUserFormState, formData
         if(err instanceof BusinessError) {
             return { errors: { _form: [err.message] }}
         }
-        console.error(err)
         return { errors: { _form: ['Falha na criação de usuário'] }}
     }
 

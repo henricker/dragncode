@@ -3,16 +3,23 @@
 import { Button } from "@nextui-org/react";
 import { ReactNode } from "react";
 import { useFormStatus } from "react-dom";
+import { twMerge } from 'tailwind-merge';
 
 type FormButtonProps = {
     children: ReactNode
-    className: string
+    className?: string
+    onClick?: () => void
     type: 'submit' | 'button' | 'reset'
 }
 
-export function FormButton({ children, className, type='button' }: Readonly<FormButtonProps>) {
+export function FormButton({ children, className, type='button', onClick }: Readonly<FormButtonProps>) {
     const { pending } = useFormStatus()
     return (
-        <Button type={type} className={className} isLoading={type === 'submit' ? pending : false}>{children}</Button>
+        <Button 
+            onClick={onClick}
+            type={type} 
+            className={twMerge('text-sm font-bold text-white p-2 rounded-lg text-center xl:text-base', className)} 
+            isLoading={type === 'submit' ? pending : false}>{children}
+        </Button>
     )
 }

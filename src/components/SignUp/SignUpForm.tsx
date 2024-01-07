@@ -1,5 +1,6 @@
 'use client';
 
+import { githubSignAction } from "@/modules/auth/actions/AuthGithub";
 import { createUserAction } from "@/modules/auth/actions/CreateUser";
 import GithubImg from '@public/Github.svg';
 import EmailImg from '@public/email.svg';
@@ -14,6 +15,7 @@ export function SignUpForm() {
     const [formState, action] = useFormState(createUserAction, { errors: {}})
 
     return (
+      <>
         <form className='p-4 flex flex-col items-center gap-3 w-full xl:gap-8' action={action}>
         <FormInput 
           startImage={{alt: 'email-icon', src: EmailImg}} 
@@ -38,11 +40,14 @@ export function SignUpForm() {
         />
         { formState.errors?._form && <span className="text-sm bg-red-500 text-white p-4">{formState.errors._form.join()}</span>}
         <div className='flex items-center justify-around w-full mt-4 gap-4'> 
-        <FormButton className='flex-1 text-sm font-bold text-white bg-blue-800 text-center p-2 rounded-lg xl:text-base' type="submit">Criar conta</FormButton>
-        <FormButton className='bg-white flex-1 flex items-center justify-center p-2 rounded-lg' type="button" >
-          <Image src={GithubImg} alt='github image'/>
-        </FormButton>  
+        <FormButton className='flex-1 bg-blue-800' type="submit">Criar conta</FormButton>
         </div>
       </form>
+      <form action={githubSignAction} className="p-4 w-full">
+          <FormButton className='bg-white w-full flex items-center justify-center' type="submit" >
+            <Image src={GithubImg} alt='github image'/>
+          </FormButton>  
+        </form>
+      </>
     )
 }
