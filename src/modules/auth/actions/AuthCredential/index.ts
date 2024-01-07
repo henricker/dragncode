@@ -3,8 +3,8 @@
 import { redirect } from 'next/navigation'
 import { signIn } from '../../infra/impl/services/nextAuth/providers'
 import {
-  credentialsAuthenticationFormState,
-  credentialsAuthenticationValidation,
+    credentialsAuthenticationFormState,
+    credentialsAuthenticationValidation,
 } from './validators'
 
 export async function credentialsAuthenticationAction(
@@ -28,5 +28,5 @@ export async function credentialsAuthenticationAction(
     return { errors: { _form: ['Falha na autenticação'] } }
   }
 
-  redirect('/private')
+  redirect('/workspaces')
 }

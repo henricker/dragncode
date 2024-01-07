@@ -7,11 +7,11 @@ export const authConfig = {
   callbacks: {
     authorized({ auth, request: { nextUrl } }) {
       const isLoggedIn = !!auth?.user
-      const isPrivateRoutes = nextUrl.pathname.startsWith('/private')
+      const isPrivateRoutes = nextUrl.pathname.startsWith('/workspaces')
       const isAuthRoutes = nextUrl.pathname.startsWith('/auth')
       if (!isLoggedIn && isPrivateRoutes) return false
       if (isLoggedIn && isAuthRoutes)
-        return Response.redirect(new URL(`/private/`, nextUrl))
+        return Response.redirect(new URL(`/workspaces/`, nextUrl))
       return true
     },
     async signIn({ account, user }) {
