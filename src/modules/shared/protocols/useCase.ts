@@ -1,4 +1,3 @@
-
-export interface IUseCase<I = any, O = any> {
-    execute(input: I): Promise<O>
+export interface IUseCase<I = unknown, O = unknown> {
+  execute(input: I): Promise<O>
 }

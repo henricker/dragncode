@@ -1,7 +1,7 @@
-import type { Metadata } from 'next';
-import { Inter } from 'next/font/google';
-import { Providers } from './Providers';
-import './globals.css';
+import type { Metadata } from 'next'
+import { Inter } from 'next/font/google'
+import { Providers } from './Providers'
+import './globals.css'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -19,7 +19,7 @@ export default function RootLayout({
     <html lang="en">
       <body className={inter.className}>
         <Providers>
-          <div className='min-h-screen w-full bg-gradient-to-r from-purple-800 to-purple-950'>
+          <div className="min-h-screen w-full bg-gradient-to-r from-purple-800 to-purple-950">
             {children}
           </div>
         </Providers>
