@@ -1,5 +1,5 @@
-import { db } from "@/db/db";
 import { IUser } from "@/modules/auth/domain/user";
+import { db } from "@/modules/shared/infra/db/db";
 import type { User } from "@prisma/client";
 import { CreateUserInput, IUserRepository } from "../../../business/repositories/UserRepository";
 
